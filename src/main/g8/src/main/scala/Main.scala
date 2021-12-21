@@ -7,7 +7,7 @@ import org.ekrich.tensorflow.unsafe.tensorflow._
 import org.ekrich.tensorflow.unsafe.tensorflowEnums._
 
 object Main {
-  
+
   type DeallocateTensor = CFuncPtr3[Ptr[Byte], CSize, Ptr[Byte], Unit]
 
   val deallocateTensor: DeallocateTensor =
@@ -28,7 +28,7 @@ object Main {
       val dimsVals = Seq(1, 5, 12)
       val dimsSize = dimsVals.size
       val dimsBytes = dimsSize.toULong * sizeof[int64_t]
-      //val dims      = alloc[int64_t](dimsSize)
+      // val dims      = alloc[int64_t](dimsSize)
       val dims = stdlib.malloc(dimsBytes).asInstanceOf[Ptr[int64_t]]
 
       // copy to memory
@@ -55,7 +55,7 @@ object Main {
       // dimensions need to match data
       val dataSize = dimsVals.reduceLeft(_ * _)
       val dataBytes = dataSize.toULong * sizeof[CFloat]
-      //val data      = alloc[CFloat](dataSize)
+      // val data      = alloc[CFloat](dataSize)
       val data = stdlib.malloc(dataBytes).asInstanceOf[Ptr[CFloat]]
 
       // copy to memory
