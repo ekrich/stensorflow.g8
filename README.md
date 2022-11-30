@@ -1,5 +1,7 @@
-# stensorflow.g8
-Getting started with TensorFlow for Scala Native.
+# stensorflow.g8 - Scala Native TensorFlow template
+![CI](https://github.com/ekrich/stensorflow.g8/workflows/CI/badge.svg)
+
+Getting started with TensorFlow for Scala Native using a `sbt` template.
 
 The current API is at the C interoperability level which means the coding will be pretty low level.
 
