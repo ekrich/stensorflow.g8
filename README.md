@@ -5,9 +5,10 @@ The current API is at the C interoperability level which means the coding will b
 
 ## Pre-requisites
 
-You must install `sbt` and the Tensorflow library.
+You must install `sbt`, Scala Native requirements, and the Tensorflow library.
 
 - sbt - https://www.scala-sbt.org/download.html
+- clang / llvm - https://scala-native.org/en/latest/user/setup.html#installing-clang-and-runtime-dependencies
 - Tensorflow - https://github.com/ekrich/stensorflow#additional-libraries
 
 ## Procedure
