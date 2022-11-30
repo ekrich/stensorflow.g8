@@ -1,5 +1,7 @@
+// This build is for this Giter8 template.
+// To test the template run `g8Test` from the sbt session.
+// See http://www.foundweekends.org/giter8/testing.html#Using+the+Giter8Plugin for more details.
 lazy val root = (project in file("."))
-  .enablePlugins(ScriptedPlugin)
   .settings(
     name := "stensorflow.g8",
     Test / test := {
@@ -12,5 +14,5 @@ lazy val root = (project in file("."))
       "-Xss2m",
       "-Dfile.encoding=UTF-8"
     ),
-    scriptedBufferLog := false
+    scriptedBufferLog := false // to see output
   )

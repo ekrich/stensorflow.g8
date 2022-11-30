@@ -1,8 +1,14 @@
-scalaVersion := "2.13.7"
+ThisBuild / scalaVersion := "3.2.1"
+ThisBuild / version := "0.1.0-SNAPSHOT"
+ThisBuild / organization := "com.example"
+ThisBuild / organizationName := "example"
 
-// Set to false or remove if you want to show stubs as linking errors
-nativeLinkStubs := true
-
-enablePlugins(ScalaNativePlugin)
-
-libraryDependencies += "org.ekrich" %%% "stensorflow" % "0.2.0"
+lazy val root = (project in file("."))
+  .enablePlugins(ScalaNativePlugin, ScalaNativeJUnitPlugin)
+  .settings(
+    libraryDependencies ++= Seq(
+      "org.ekrich" %%% "stensorflow" % "0.3.0"
+    ),
+    testOptions += Tests.Argument(TestFrameworks.JUnit, "-a", "-s", "-v"),
+    logLevel := Level.Info // Info, Debug
+  )

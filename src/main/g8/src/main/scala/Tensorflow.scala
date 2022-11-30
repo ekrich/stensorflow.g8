@@ -1,3 +1,5 @@
+package example
+
 import scalanative.libc.stdlib
 import scalanative.unsafe.{CFloat, CFuncPtr3, CSize, fromCString}
 import scalanative.unsafe.{Ptr, Zone, alloc, sizeof}
@@ -6,8 +8,7 @@ import scalanative.unsigned._
 import org.ekrich.tensorflow.unsafe.tensorflow._
 import org.ekrich.tensorflow.unsafe.tensorflowEnums._
 
-object Main {
-
+trait tfExample {
   type DeallocateTensor = CFuncPtr3[Ptr[Byte], CSize, Ptr[Byte], Unit]
 
   val deallocateTensor: DeallocateTensor =
@@ -16,13 +17,10 @@ object Main {
       println("Free Original Tensor")
     }
 
-  def main(args: Array[String]): Unit =
-    Zone { implicit z =>
-      println("Running example...")
+  def reportVersion: String = fromCString(TF_Version())
 
-      // show version
-      val reportVersion = fromCString(TF_Version())
-      println("Tensorflow version: " + reportVersion)
+  def runExample: Boolean = {
+    Zone { implicit z =>
 
       // handle dims
       val dimsVals = Seq(1, 5, 12)
@@ -73,7 +71,7 @@ object Main {
       println(data)
 
       // same as null?
-      val nullptr = alloc[Byte]
+      val nullptr = alloc[Byte]()
       !nullptr = 0x00
 
       println("Create Tensor")
@@ -126,6 +124,25 @@ object Main {
 
       println("Success create tensor")
       TF_DeleteTensor(tensor)
+
+      // result
+      true
+    }
+  }
+}
+
+object Tensorflow extends tfExample {
+
+  def main(args: Array[String]): Unit =
+    Zone { implicit z =>
+      println("Running example...")
+
+      // show version
+      println("Tensorflow version: " + reportVersion)
+
+      // run example code
+      runExample
+
       println("Done.")
     }
 }
