@@ -9,7 +9,7 @@ You must install `sbt`, Scala Native requirements, and the Tensorflow library.
 
 - sbt - https://www.scala-sbt.org/download.html
 - clang / llvm - https://scala-native.org/en/latest/user/setup.html#installing-clang-and-runtime-dependencies
-- Tensorflow - https://github.com/ekrich/stensorflow#additional-libraries
+- Tensorflow - https://github.com/ekrich/stensorflow#tensorflow-library
 
 ## Procedure
 Use the following directions to create a project directory `tf-start` in the current directory. It is recommended that you start in your workspace or the place you want the project. You can use any name in place of `tf-start` but then substitute that name in the directions that follow:
