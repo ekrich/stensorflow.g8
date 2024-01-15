@@ -9,7 +9,7 @@ import org.ekrich.tensorflow.unsafe.tensorflow._
 
 class TensorflowTest extends tfExample {
 
-  val tfVersion = "2.12.0"
+  val tfVersion = "2.15.0"
 
   @Test def TF_VersionTest(): Unit = {
     Zone { implicit z =>
