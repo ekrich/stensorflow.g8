@@ -19,6 +19,20 @@ trait tfExample {
 
   def reportVersion: String = fromCString(TF_Version())
 
+  val tfMinVersion = "2.18"
+
+  // major, minor
+  case class Version(major: Int, minor: Int) extends Ordered[Version] {
+    import math.Ordered.orderingToOrdered
+    def compare(that: Version): Int =
+      (this.major, this.minor).compare(that.major, that.minor)
+  }
+
+  def version(ver: String): Version = {
+    val arr = ver.split("[.]")
+    Version(arr(0).toInt, arr(1).toInt)
+  }
+
   def runExample: Boolean = {
     Zone { implicit z =>
 
