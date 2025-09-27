@@ -17,7 +17,7 @@ trait tfExample {
       println("Free Original Tensor")
     }
 
-  def reportVersion: String = fromCString(TF_Version())
+  def tfVersion: String = fromCString(TF_Version())
 
   val tfMinVersion = "2.18"
 
@@ -152,7 +152,7 @@ object Tensorflow extends tfExample {
       println("Running example...")
 
       // show version
-      println("Tensorflow version: " + reportVersion)
+      println("Tensorflow version: " + tfVersion)
 
       // run example code
       runExample

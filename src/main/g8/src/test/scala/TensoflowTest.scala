@@ -11,13 +11,12 @@ class TensorflowTest extends tfExample {
 
   @Test def TF_VersionTest(): Unit = {
     Zone { implicit z =>
-      val tfVersion = fromCString(TF_Version())
       val swVersion = version(tfVersion)
       val minVersion = version(tfMinVersion)
 
-      println(s"Tensorflow version: \${reportVersion}")
+      println(s"Tensorflow version: \${tfVersion}")
       assertTrue(
-        s"Version: $minVersion, not <=  $swVersion",
+        s"Version: \$minVersion, not <=  \$swVersion",
         minVersion <= swVersion
       )
     }
