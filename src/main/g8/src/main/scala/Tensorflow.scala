@@ -35,7 +35,6 @@ trait tfExample {
 
   def runExample: Boolean = {
     Zone { implicit z =>
-
       // handle dims
       val dimsVals = Seq(1, 5, 12)
       val dimsSize = dimsVals.size
